@@ -1,0 +1,404 @@
+/* ============================================================
+   hero.css  —  split-layout cinematic hero (Unreal Engine style)
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: #050816;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 140px 70px 60px;
+}
+
+/* ── Symmetrical ambient glows ─────────────────────────────── */
+.hero__ambient {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__ambient--top {
+  width: 1300px;
+  height: 1300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 60%);
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(120px);
+}
+
+.hero__ambient--right {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(201,168,76,0.14), transparent 70%);
+  right: -8%;
+  top: 8%;
+  filter: blur(100px);
+}
+
+.hero__ambient--left {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(26,143,193,0.16), transparent 70%);
+  left: -6%;
+  bottom: 10%;
+  filter: blur(110px);
+}
+
+.hero__ambient--bottom {
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(10,22,40,0.8), transparent 70%);
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(60px);
+}
+
+/* ── Main two-column grid ──────────────────────────────────── */
+.hero__container {
+  width: 100%;
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 55px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── LEFT: text ────────────────────────────────────────────── */
+.hero__left {
+  padding-left: 10px;
+}
+
+/* Brand mark */
+.hero__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.hero__brand span { color: var(--gold); }
+
+.hero__brand-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(201,168,76,0.7);
+  background: radial-gradient(circle, rgba(201,168,76,0.2), transparent);
+  flex-shrink: 0;
+}
+
+/* Title */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  color: var(--white);
+  margin-bottom: 30px;
+}
+
+.hero__title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Subtitle */
+.hero__subtitle {
+  color: rgba(255,255,255,0.70);
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.85;
+  max-width: 500px;
+  margin-bottom: 42px;
+  font-weight: 400;
+}
+
+/* Buttons */
+.hero__btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero__btn-primary {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 14px;
+  background: var(--sky);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.hero__btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(26,143,193,0.5);
+  background: var(--sky-light);
+}
+
+.hero__btn-secondary {
+  padding: 15px 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.055);
+  backdrop-filter: blur(12px);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.hero__btn-secondary:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.28);
+}
+
+/* ── RIGHT: video section ──────────────────────────────────── */
+.hero__right {
+  position: relative;
+}
+
+.hero__video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 580px;
+}
+
+/* Blurred glow copies of the video (the "symmetrical" background effect) */
+.hv-glow {
+  position: absolute;
+  inset: -100px;
+  width: calc(100% + 200px);
+  height: calc(100% + 200px);
+  object-fit: cover;
+  filter: blur(110px) saturate(180%) brightness(1.1);
+  opacity: 0;
+  transform: scale(1.3);
+  transition: opacity 2s ease;
+  mix-blend-mode: screen;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hv-glow-active {
+  opacity: 0.5;
+}
+
+/* The rounded video card on top */
+.hero__video-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #111;
+  z-index: 2;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+}
+
+/* Individual stacked videos */
+.hv-main {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 2s ease, transform 12s ease;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.hv-active {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* Gradient overlay inside card */
+.hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.1) 55%);
+  z-index: 3;
+}
+
+/* Noise texture */
+.hero__video-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  opacity: 0.04;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Inner radial glow inside card */
+.hero__video-inner-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 70%);
+  top: -10%;
+  left: 15%;
+  filter: blur(70px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Video label bottom-left */
+.hero__video-label {
+  position: absolute;
+  left: 32px;
+  bottom: 28px;
+  z-index: 5;
+}
+
+.hero__video-label h3 {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+  transition: opacity 0.5s ease;
+}
+
+.hero__video-label p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.68);
+  transition: opacity 0.5s ease;
+}
+
+/* Dot indicators bottom-right */
+.hero__video-dots {
+  position: absolute;
+  right: 28px;
+  bottom: 32px;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+}
+
+.hero__dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.32);
+  transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.hero__dot--active {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+
+/* ── Scroll indicator ──────────────────────────────────────── */
+.hero__scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.38);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.45), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1);    }
+  50%       { opacity: 1;   transform: scaleY(1.18); }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .hero {
+    padding: 130px 40px 60px;
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero__left {
+    padding: 0;
+  }
+
+  .hero__brand {
+    justify-content: center;
+  }
+
+  .hero__subtitle {
+    margin-inline: auto;
+  }
+
+  .hero__btns {
+    justify-content: center;
+  }
+
+  .hero__video-wrapper {
+    height: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 110px 20px 50px;
+  }
+
+  .hero__title {
+    letter-spacing: -1.5px;
+  }
+
+  .hero__video-wrapper {
+    height: 360px;
+  }
+
+  .hero__video-card {
+    border-radius: 22px;
+  }
+
+  .hero__btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__btn-primary,
+  .hero__btn-secondary {
+    width: 240px;
+    text-align: center;
+  }
+
+  .hero__video-label h3 {
+    font-size: 1.3rem;
+  }
+}

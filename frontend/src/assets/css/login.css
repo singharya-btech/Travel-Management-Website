@@ -1,0 +1,227 @@
+/* ============================================================
+   login.css  —  glassmorphism login page
+   ============================================================ */
+
+.login-page {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px 40px;
+}
+
+/* Decorative background blobs */
+.login-page__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(26, 143, 193, 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(26, 143, 193, 0.08) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+/* Glass card */
+.login-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 24px;
+  padding: 50px 46px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.login-card__logo {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.login-card__logo span {
+  color: var(--gold);
+}
+
+.login-card__sub {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.48);
+  margin-bottom: 38px;
+}
+
+/* Form fields */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 17px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 12px;
+  font-size: 15px;
+  color: var(--white);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.form-input:focus {
+  border-color: var(--sky);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Checkbox row */
+.login-card__checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.login-card__checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+/* Login button */
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-top: 6px;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.login-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* Divider */
+.login-divider {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.28);
+  margin: 22px 0;
+  position: relative;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.login-divider::before { left: 0; }
+.login-divider::after  { right: 0; }
+
+.login-card__footer-text {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.42);
+  margin-top: 24px;
+}
+
+.login-card__footer-text button {
+  color: var(--gold);
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.login-card__footer-text button:hover {
+  color: var(--gold-light);
+}
+
+@media (max-width: 480px) {
+  .login-card { padding: 36px 24px; }
+}
+
+/* ── Extra additions for TravelBuddy ── */
+.login-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 28px;
+}
+.login-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  transition: all var(--transition);
+}
+.login-tab--active {
+  background: var(--gold);
+  color: var(--navy);
+}
+.form-error {
+  color: #f08080;
+  font-size: 13px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(240,128,128,0.1);
+  border-radius: 8px;
+  border-left: 3px solid #f08080;
+}
+.form-success {
+  color: #6fcf97;
+  font-size: 13px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(111,207,151,0.1);
+  border-radius: 8px;
+  border-left: 3px solid #6fcf97;
+}

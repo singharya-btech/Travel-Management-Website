@@ -1,0 +1,524 @@
+/* ============================================================
+   admin.css  —  admin dashboard
+   ============================================================ */
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────── */
+.admin-sidebar {
+  width: 256px;
+  min-height: 100vh;
+  background: var(--navy);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  overflow-y: auto;
+}
+
+.sidebar__logo-wrap {
+  padding: 26px 26px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.sidebar__logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.sidebar__logo span {
+  color: var(--gold);
+}
+
+.sidebar__badge {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 4px;
+}
+
+.sidebar__section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  padding: 20px 26px 6px;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 26px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.58);
+  cursor: pointer;
+  transition: all var(--transition);
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+}
+
+.sidebar__link:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar__link--active {
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.09);
+  border-left-color: var(--gold);
+}
+
+.sidebar__icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.sidebar__exit {
+  margin-top: auto;
+  padding: 18px 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Main area ──────────────────────────────────────────────── */
+.admin-main {
+  margin-left: 256px;
+  flex: 1;
+  background: var(--off-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-topbar {
+  background: var(--white);
+  padding: 18px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray-light);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.admin-topbar__title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.admin-topbar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-mid);
+}
+
+.admin-topbar__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.admin-content {
+  padding: 32px 34px;
+  flex: 1;
+}
+
+/* ── Stats grid ─────────────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  border: 1px solid var(--gray-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card__icon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 26px;
+  opacity: 0.7;
+}
+
+.stat-card__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+
+.stat-card__value {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 5px;
+}
+
+.stat-card__change {
+  font-size: 12px;
+  color: #1fa85e;
+  font-weight: 600;
+}
+
+/* ── Admin 2-col grid ───────────────────────────────────────── */
+.admin-grid-2 {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+/* ── Admin card ─────────────────────────────────────────────── */
+.admin-card {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-light);
+  overflow: hidden;
+}
+
+.admin-card__header {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-card__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.admin-card__body {
+  padding: 20px 22px;
+}
+
+/* ── Booking rows ───────────────────────────────────────────── */
+.booking-row {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.booking-row:last-child {
+  border-bottom: none;
+}
+
+.booking-row__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--sky);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.booking-row__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.booking-row__dest {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.booking-row__amount {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  padding-right: 10px;
+}
+
+/* Status badges */
+.status-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge--confirmed { background: rgba(31, 168, 94, 0.1);  color: #1a7a42; }
+.status-badge--pending   { background: rgba(201, 168, 76, 0.15); color: #7a5c10; }
+.status-badge--cancelled { background: rgba(220, 53, 69, 0.1);  color: #a01c2a; }
+
+/* ── Progress bars ──────────────────────────────────────────── */
+.progress-row {
+  margin-bottom: 18px;
+}
+
+.progress-row__labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+}
+
+.progress-row__labels strong {
+  color: var(--navy);
+}
+
+.progress-track {
+  height: 6px;
+  background: var(--gray-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--sky);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+/* ── Data tables ────────────────────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 10px 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  border-bottom: 2px solid var(--gray-light);
+}
+
+.data-table td {
+  padding: 13px 0;
+  font-size: 14px;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.data-table td strong {
+  color: var(--navy);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* User table with padding */
+.user-table th,
+.user-table td {
+  padding: 12px 16px;
+}
+
+.user-table th {
+  background: var(--off-white);
+}
+
+.user-table tr:hover td {
+  background: #f0f4fb;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+/* ── Add package form ───────────────────────────────────────── */
+.add-pkg-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.add-pkg-form .full-row {
+  grid-column: 1 / -1;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 11px 14px;
+  border: 1.5px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--navy);
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+  background: var(--off-white);
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--sky);
+  background: var(--white);
+}
+
+.submit-btn {
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  padding: 12px 26px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background var(--transition);
+}
+
+.submit-btn:hover {
+  background: var(--sky);
+}
+
+.cancel-btn {
+  background: var(--gray-light);
+  color: var(--navy);
+  border: none;
+  padding: 12px 26px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background var(--transition);
+}
+
+.cancel-btn:hover {
+  background: #d4dbe8;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .stats-grid      { grid-template-columns: 1fr 1fr; }
+  .admin-grid-2    { grid-template-columns: 1fr; }
+  .add-pkg-form    { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .admin-sidebar   { width: 0; overflow: hidden; }
+  .admin-main      { margin-left: 0; }
+  .admin-content   { padding: 20px 16px; }
+}
+
+/* ── Topbar avatar dropdown ─────────────────────────────────── */
+.admin-topbar__user {
+  position: relative;
+  cursor: pointer;
+}
+
+.topbar-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 32px rgba(10,22,40,0.13);
+  min-width: 180px;
+  z-index: 999;
+  overflow: hidden;
+  animation: dropFade 0.15s ease;
+}
+
+@keyframes dropFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.topbar-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy);
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-body);
+  transition: background 0.15s;
+}
+
+.topbar-dropdown__item:hover {
+  background: var(--off-white);
+}
+
+.topbar-dropdown__item--danger {
+  color: #e24b4a;
+}
+
+.topbar-dropdown__item--danger:hover {
+  background: rgba(226,75,74,0.07);
+}
+
+.topbar-dropdown__divider {
+  height: 1px;
+  background: var(--gray-light);
+  margin: 4px 0;
+}
